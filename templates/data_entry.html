@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="row">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name: </label>
+            {{ form.name }}
+            <div id="emailHelp" class="form-text">{{ field.errors }}</div>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address: </label>
+            {{ form.address }}
+            <div id="emailHelp" class="form-text">{{ field.errors }}</div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+{% if result %}
+<div class="row">
+    <div class="mb-3">
+        <div id="datatable">
+            <ul class="list-group list-group-flush">
+                {% for row in result %}
+                    <li class="list-group-item">{{row|join:", "}}</li>
+                {% endfor %}
+
+            </ul>
+        </div> 
+    </div>
+</div>
+{% endif %}
+  
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="row g3 mb-4">
+  <h1>People Grouping</h1>
+  <p>
+    <em>Webapp which groups people living at identical addresses </em>!
+  </p>
+</div>
+  
+
+{% if result %}
+<div class="row">
+  <div class="md-3">
+    <a href="{% url 'file_download' %}" class="btn btn-primary">Download</a>
+    <a href="{% url 'delete_records' %}" class="btn btn-danger">Reset</a>
+
+  </div>
+    <div class="mb-3">
+        <div id="datatable">
+            <ul class="list-group list-group-flush">
+                {% for row in result %}
+                    <li class="list-group-item">{{row|join:", "}}</li>
+                {% endfor %}
+
+            </ul>
+        </div> 
+    </div>
+</div>
+{% endif %}
+{% endblock %}

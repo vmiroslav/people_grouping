@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block title %}
+      <title>People Grouping</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container bg-info">
+            <ul class="nav bg-info">
+                <li class="nav-item"><a  class="nav-link link-light"  href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a  class="nav-link link-light" href="{% url 'file_upload' %}">File Upload</a></li>
+                <li class="nav-item"><a  class="nav-link link-light"  href="{% url 'data_entry' %}">Data Entry</a></li>
+              </ul>
+        </div>
+      </nav>
+      
+      <div class="container mt-5">
+        {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

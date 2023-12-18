@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="row">
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.csv_file }}
+            <div id="emailHelp" class="form-text">{{ field.errors }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+{% if result %}
+<div class="row">
+    <div class="mb-3">
+        <div id="datatable">
+            <ul class="list-group list-group-flush">
+                {% for row in result %}
+                    <li class="list-group-item">{{row|join:", "}}</li>
+                {% endfor %}
+
+            </ul>
+        </div> 
+    </div>
+</div>
+{% endif %}
+  
+{% endblock %}
